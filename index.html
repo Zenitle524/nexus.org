@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus — войти в свободу</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        if (localStorage.getItem('nexus-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</head>
+<body>
+
+<div class="nexus-container">
+    <div class="logo">NEXUS<span class="logo-dot">.</span></div>
+    <div class="tagline">твоя сеть. твои правила.</div>
+
+    <div class="status-badge">
+        <span class="square"></span>
+        <span class="text" id="statusText">Строим свободу</span>
+    </div>
+
+    <div class="description">
+        <strong>Nexus</strong> — это не просто мессенджер.<br />
+        Это твоя сеть. <br />
+        Без слежки. <br />
+        Без блоков. <br />
+        Без лишнего шума.<br />
+        Только ты, твой голос и те, кто тебе нужен.
+    </div>
+
+    <div class="features">
+        <div class="window-card">
+            <div class="window-title">🔒</div>
+            <div class="window-body">Без слежки</div>
+        </div>
+        <div class="window-card">
+            <div class="window-title">🚫</div>
+            <div class="window-body">Без блокировок</div>
+        </div>
+        <div class="window-card">
+            <div class="window-title">🌐</div>
+            <div class="window-body">Своя сеть</div>
+        </div>
+    </div>
+
+    <a href="sign.html" class="btn-enter">Войти в свободу</a>
+
+    <button class="theme-toggle" id="themeToggle">🌓 Переключить тему</button>
+
+    <div class="footer-copy">
+        © 2026 <span class="signature">k1r_leet</span><br />
+        <span class="footer-text">Все права свободны. Мучения наши, свобода ваша.</span>
+    </div>
+
+    <div class="music-vibe">♫ ♪ ♫</div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
