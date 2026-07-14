@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus — вход</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        if (localStorage.getItem('nexus-session') === 'true') {
+            window.location.href = 'chat.html';
+        }
+        if (localStorage.getItem('nexus-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedUsername = localStorage.getItem('nexus-remember-username');
+            if (savedUsername) {
+                document.getElementById('username').value = savedUsername;
+            }
+        });
+    </script>
+    <style>
+        .login-form { max-width: 360px; margin: 0 auto; text-align: left; }
+        .login-form label { display: block; margin: 20px 0 4px; font-weight: 600; }
+        .login-form input { width: 100%; padding: 8px 10px; font-family: 'Tahoma', sans-serif; font-size: 14px; border: 2px solid var(--border); background: var(--bg); color: var(--text); }
+        .btn-group { display: flex; gap: 16px; margin-top: 24px; justify-content: center; }
+        .btn-group .btn-enter { flex: 1; text-align: center; padding: 8px 0; }
+        .back-link { display: inline-block; margin-top: 20px; color: var(--text); opacity: 0.6; text-decoration: none; font-size: 13px; }
+        .back-link:hover { opacity: 1; }
+    </style>
+</head>
+<body>
+
+<div class="nexus-container">
+    <div class="logo">NEXUS<span class="logo-dot">.</span></div>
+    <div class="tagline">войти в свободу</div>
+
+    <div class="login-form">
+        <label for="username">Имя пользователя</label>
+        <input type="text" id="username" />
+
+        <label for="password">Пароль</label>
+        <input type="password" id="password" />
+
+        <div class="btn-group">
+            <a href="#" class="btn-enter" id="loginBtn">Войти</a>
+            <a href="register.html" class="btn-enter">Регистрация</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">← На главную</a>
+
+    <div class="footer-copy" style="margin-top: 40px;">
+        © 2026 <span class="signature">k1r_leet</span><br />
+        <span class="footer-text">Все права свободны. Мучения наши, свобода ваша.</span>
+    </div>
+</div>
+
+<script src="sign.js"></script>
+</body>
+</html>
