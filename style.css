@@ -241,3 +241,55 @@ body {
         font-size: 13px;
     }
 }
+/* ——— ЦВЕТА НИКОВ В ЧАТЕ ——— */
+.chat-message .author {
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.chat-message .author:hover {
+    opacity: 0.8;
+    text-shadow: 0 0 8px currentColor;
+}
+
+/* ——— ЛЁГКИЙ ХОВЕР НА СООБЩЕНИЯХ ——— */
+.chat-message {
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    transition: background 0.15s ease, padding-left 0.15s ease;
+}
+
+.chat-message:hover {
+    background: var(--badge-bg);
+    padding-left: 6px;
+    border-radius: 4px;
+}
+
+/* ——— РАЗНООБРАЗИЕ В ИНТЕРФЕЙСЕ ——— */
+.window-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.window-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 0px var(--shadow);
+}
+
+.btn-enter {
+    transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.btn-enter:hover {
+    background: var(--card-bg);
+    box-shadow: 3px 3px 0px var(--shadow);
+}
+
+.theme-toggle {
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--badge-bg);
+    opacity: 1;
+}
