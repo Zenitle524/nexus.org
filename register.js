@@ -70,10 +70,8 @@ registerBtn.addEventListener('click', (e) => {
         }
     }
 
-    // Сохраняем данные пользователя временно
     tempUserData = { username, email, password };
 
-    // Отправляем письмо с подтверждением через Firebase
     const actionCodeSettings = {
         url: window.location.href,
         handleCodeInApp: true,
@@ -92,7 +90,6 @@ registerBtn.addEventListener('click', (e) => {
         });
 });
 
-// Подтверждение кода
 verifyBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const code = codeInput.value.trim();
@@ -109,7 +106,6 @@ verifyBtn.addEventListener('click', (e) => {
 
     signInWithEmailLink(auth, email, window.location.href)
         .then(() => {
-            // Код подтверждён — сохраняем пользователя
             const users = JSON.parse(localStorage.getItem('nexus-users') || '{}');
             const { username, password, email: userEmail } = tempUserData;
             users[username] = { password, email: userEmail, confirmed: true };
@@ -126,13 +122,11 @@ verifyBtn.addEventListener('click', (e) => {
         });
 });
 
-// Если мы вернулись после перехода по ссылке из письма
 if (isSignInWithEmailLink(auth, window.location.href)) {
     const email = window.localStorage.getItem('emailForSignIn');
     if (email) {
         signInWithEmailLink(auth, email, window.location.href)
             .then(() => {
-                // Автоматически подтверждаем пользователя
                 const users = JSON.parse(localStorage.getItem('nexus-users') || '{}');
                 const { username, password, email: userEmail } = tempUserData;
                 users[username] = { password, email: userEmail, confirmed: true };
