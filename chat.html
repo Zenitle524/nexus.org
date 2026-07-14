@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus — чат</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        if (localStorage.getItem('nexus-session') !== 'true') {
+            window.location.href = 'sign.html';
+        }
+        if (localStorage.getItem('nexus-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <script type="importmap">
+        {
+            "imports": {
+                "firebase-app": "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js",
+                "firebase-database": "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"
+            }
+        }
+    </script>
+    <style>
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .chat-messages {
+            border: 2px solid var(--border);
+            background: var(--bg);
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            margin-bottom: 12px;
+        }
+        .chat-message {
+            padding: 4px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+        }
+        .chat-message .author {
+            font-weight: 600;
+            color: var(--text);
+        }
+        .chat-message .time {
+            float: right;
+            margin-left: 10px;
+            font-size: 11px;
+            opacity: 0.6;
+        }
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+        .chat-input-area input {
+            flex: 1;
+            padding: 6px 10px;
+            font-family: 'Tahoma', sans-serif;
+            font-size: 14px;
+            border: 2px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+        }
+        .chat-input-area .btn-enter {
+            padding: 6px 20px;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+        .chat-logout {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--text);
+            opacity: 0.6;
+            text-decoration: none;
+            font-size: 13px;
+        }
+        .chat-logout:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div class="nexus-container">
+    <div class="logo">NEXUS<span class="logo-dot">.</span></div>
+    <div class="tagline">глобальный чат</div>
+
+    <div class="chat-container">
+        <div class="chat-messages" id="chatMessages"></div>
+
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Напиши сообщение..." />
+            <a href="#" class="btn-enter" id="sendBtn">→</a>
+        </div>
+
+        <a href="sign.html" class="chat-logout" id="logoutBtn">Выйти</a>
+    </div>
+
+    <div class="footer-copy" style="margin-top: 30px;">
+        © 2026 <span class="signature">k1r_leet</span><br />
+        <span class="footer-text">Все права свободны. Мучения наши, свобода ваша.</span>
+    </div>
+</div>
+
+<script type="module" src="chat.js"></script>
+</body>
+</html>
