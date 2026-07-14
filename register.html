@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus — регистрация</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+        if (localStorage.getItem('nexus-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    <style>
+        .login-form { max-width: 360px; margin: 0 auto; text-align: left; }
+        .login-form label { display: block; margin: 20px 0 4px; font-weight: 600; }
+        .login-form input { width: 100%; padding: 8px 10px; font-family: 'Tahoma', sans-serif; font-size: 14px; border: 2px solid var(--border); background: var(--bg); color: var(--text); }
+        .btn-group { display: flex; gap: 16px; margin-top: 24px; justify-content: center; }
+        .btn-group .btn-enter { flex: 1; text-align: center; padding: 8px 0; }
+        .back-link { display: inline-block; margin-top: 20px; color: var(--text); opacity: 0.6; text-decoration: none; font-size: 13px; }
+        .back-link:hover { opacity: 1; }
+        .message { margin-top: 16px; padding: 10px; background: var(--bg); border: 1px solid var(--border); color: var(--text); display: none; }
+        .hidden { display: none; }
+        .code-input-area { margin-top: 16px; }
+        .code-input-area input { width: 100%; padding: 8px 10px; font-family: 'Tahoma', sans-serif; font-size: 14px; border: 2px solid var(--border); background: var(--bg); color: var(--text); }
+    </style>
+</head>
+<body>
+
+<div class="nexus-container">
+    <div class="logo">NEXUS<span class="logo-dot">.</span></div>
+    <div class="tagline">создать аккаунт</div>
+
+    <div class="login-form">
+        <div id="registerForm">
+            <label for="reg-username">Имя пользователя</label>
+            <input type="text" id="reg-username" />
+
+            <label for="reg-email">Электронная почта</label>
+            <input type="email" id="reg-email" />
+
+            <label for="reg-password">Пароль</label>
+            <input type="password" id="reg-password" />
+
+            <label for="reg-password2">Повторите пароль</label>
+            <input type="password" id="reg-password2" />
+
+            <div class="btn-group">
+                <a href="#" class="btn-enter" id="registerBtn">Зарегистрироваться</a>
+            </div>
+        </div>
+
+        <div id="codeVerification" class="hidden">
+            <p>Код подтверждения отправлен на твою почту.</p>
+            <label for="verification-code">Введите код из письма</label>
+            <input type="text" id="verification-code" placeholder="123456" />
+            <div class="btn-group" style="margin-top: 16px;">
+                <a href="#" class="btn-enter" id="verifyBtn">Подтвердить</a>
+            </div>
+        </div>
+
+        <div id="registerMessage" class="message"></div>
+    </div>
+
+    <a href="sign.html" class="back-link">← Уже есть аккаунт? Войти</a>
+
+    <div class="footer-copy" style="margin-top: 40px;">
+        © 2026 <span class="signature">k1r_leet</span><br />
+        <span class="footer-text">Все права свободны. Мучения наши, свобода ваша.</span>
+    </div>
+</div>
+
+<script src="register.js"></script>
+</body>
+</html>
