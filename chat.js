@@ -20,13 +20,22 @@ const chatInput = document.getElementById('chatInput');
 const sendBtn = document.getElementById('sendBtn');
 const logoutBtn = document.getElementById('logoutBtn');
 
-const username = localStorage.getItem('nexus-username') || 'Аноним';
+// Получаем имя пользователя
+let username = localStorage.getItem('nexus-username') || 'Аноним';
+
+// Генерируем или получаем цвет для пользователя
+let userColor = localStorage.getItem('nexus-user-color');
+if (!userColor) {
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#ff9ff3', '#54a0ff', '#5f6caf'];
+    userColor = colors[Math.floor(Math.random() * colors.length)];
+    localStorage.setItem('nexus-user-color', userColor);
+}
 
 function sendMessage() {
     const text = chatInput.value.trim();
     if (!text) return;
     const time = new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-    push(messagesRef, { author: username, text, time })
+    push(messagesRef, { author: username, text, time, color: userColor })
         .then(() => chatInput.value = '')
         .catch(() => alert('Ошибка отправки. Проверь интернет или Firebase.'));
 }
@@ -35,7 +44,11 @@ onChildAdded(messagesRef, (data) => {
     const msg = data.val();
     const el = document.createElement('div');
     el.className = 'chat-message';
-    el.innerHTML = `<span class="author">${msg.author}</span><span class="time">${msg.time}</span><span>${msg.text}</span>`;
+    el.innerHTML = `
+        <span class="author" style="color: ${msg.color || '#ffffff'}">${msg.author}</span>
+        <span class="time">${msg.time}</span>
+        <span>${msg.text}</span>
+    `;
     messagesContainer.appendChild(el);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 });
